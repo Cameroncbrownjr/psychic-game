@@ -1,0 +1,63 @@
+<body>
+    <div id="game-info">
+        <h2>Guess what letter I'm thinking of.</h2>
+        <h4 id="wins">Wins: </h4>
+        <h4 id="losses">Losses: </h4>
+        <h4 id="guessesRemaining">Guesses Left: </h4>
+        <h4 id="numberofguesses">Number of guesses:</h4>
+    </div>
+
+    <script type="text/javascript">
+        var wins = document.getElementById("wins");
+        var losses = document.getElementById("losses");
+        var guessesRemaining = document.getElementById("guessesRemaining");
+        var numberofguesses = document.getElementById("numberofguesses");
+        var allLetters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n",
+         "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        var winsCount = 0;
+        var lossesCount = 0;
+        var defaultGuessesRemaining = 9;
+        var guessesRemainingCount = defaultGuessesRemaining;
+        var guessesArray = [];
+	var getRandomLetter = function () {
+            randomLetter = allLetters[Math.floor(Math.random() * allLetters.length)]
+		console.log(randomLetter);
+		return randomLetter;
+	}
+	var displayStats = function () {
+            wins.innerHTML = "Wins: " + winsCount;
+        losses.innerHTML = "Losses: " + lossesCount;
+		guessesRemaining.innerHTML = "Guesses Left: " + guessesRemainingCount;
+        NumberOfGuesses.innerHTML = "Your Guesses So Far: " + guessesArray;
+
+	}
+	var resetGame = function () {
+            guessesArray = [];
+        guessesRemainingCount = defaultGuessesRemaining;
+		currentLetter = getRandomLetter();
+	}
+	var userWon = function (userLetter) {
+		return userLetter === currentLetter;
+	}
+	var userLost = function () {
+		return guessesRemainingCount === 0;
+	}
+	var currentLetter = getRandomLetter();
+	displayStats();
+	document.onkeyup = function(event) {
+		var userLetter = event.key;
+		guessesRemainingCount--
+		guessesArray.push(userLetter)
+		if (userWon(userLetter)) {
+            winsCount++;
+        resetGame();
+    }
+		if (userLost()) {
+            lossesCount++;
+        resetGame();
+    }
+    displayStats();
+}
+</script>
+
+</body>
