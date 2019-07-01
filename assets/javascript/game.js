@@ -15,10 +15,10 @@
 		return randomLetter;
 	}
 	var displayStats = function () {
-            wins.innerHTML = "Wins: " + winsCount;
-        losses.innerHTML = "Losses: " + lossesCount;
-		guessesRemaining.innerHTML = "Guesses Left: " + guessesRemainingCount;
-        NumberOfGuesses.innerHTML = "Your Guesses So Far: " + guessesArray;
+            wins.textContent = "Wins: " + winsCount;
+        losses.textContent = "Losses: " + lossesCount;
+		guessesRemaining.textContent = "Guesses Left: " + guessesRemainingCount;
+        NumberOfGuesses.textContent = "Your Guesses So Far: " + guessesArray;
 
 	}
 	var resetGame = function () {
